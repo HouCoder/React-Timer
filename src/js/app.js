@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {
   BrowserRouter as Router,
@@ -13,23 +12,19 @@ import {
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-
-import Layout from './components/Layout';
+import Layout from './layouts/Layout';
 import Dashboard from './pages/Dashboard';
+import Setting from './pages/Setting';
 
 const __app = document.getElementById('app');
 
-const themedLayout = () => (
-    <MuiThemeProvider>
-        <Layout pageName='Index'/>
-    </MuiThemeProvider>
-);
-
 ReactDOM.render(
-	<Router>
-		<div>
-			<Route exact path="/" component={themedLayout}/>
-			<Route path="/about" component={Dashboard}/>
-		</div>
-	</Router>
+    <Router>
+        <div>
+            <Route component={Layout}>
+                <Route path="/" component={Dashboard}/>
+                <Route path="/setting" component={Setting}/>
+            </Route>
+        </div>
+    </Router>
 , __app);

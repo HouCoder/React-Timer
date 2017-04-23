@@ -30,10 +30,8 @@ class Header extends React.Component {
                     onRequestChange={this.handleToggle.bind(this)}
                 >
                     <MenuItem>
-                        <Link to='/about'>About</Link>
+                        <Link to='/setting'>Setting</Link>
                     </MenuItem>
-                    <MenuItem>Setting</MenuItem>
-                    <MenuItem>Sign out</MenuItem>
                 </Drawer>
             </div>
         );
