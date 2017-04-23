@@ -8,11 +8,11 @@ class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {open: false};
+        this.state = {isDrawerOpen: false};
     }
 
     handleToggle() {
-        this.setState({open: !this.state.open});
+        this.setState({isDrawerOpen: !this.state.isDrawerOpen});
     }
 
     render() {
@@ -23,7 +23,12 @@ class Header extends React.Component {
                     iconClassNameRight='muidocs-icon-navigation-expand-more'
                     onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
                 />
-                <Drawer open={this.state.open}>
+
+                <Drawer
+                    open={this.state.isDrawerOpen}
+                    docked={false}
+                    onRequestChange={this.handleToggle.bind(this)}
+                >
                     <MenuItem>
                         <Link to='/about'>About</Link>
                     </MenuItem>

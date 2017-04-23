@@ -9,7 +9,7 @@ const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 module.exports = {
     devtool: 'inline-sourcemap',
     entry: {
-        client: path.resolve(APP_PATH, 'js/client.js'),
+        app: path.resolve(APP_PATH, 'js/app.js'),
     },
     module: {
         loaders: [
