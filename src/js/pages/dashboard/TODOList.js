@@ -27,12 +27,12 @@ const rightIconMenu = (
 )
 
 export default class TODOList extends React.Component {
-    openDetail = (event) => {
+    openDetail(event) {
         event.stopPropagation()
         event.preventDefault()
     }
 
-    render() {
+    render = () => {
         return (
             <List>
                 {

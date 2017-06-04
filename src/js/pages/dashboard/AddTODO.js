@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField'
 
 export default class addTODO extends React.Component {
+
     handleKeyPress = (event) => {
         let value = event.target.value
 
@@ -18,7 +19,7 @@ export default class addTODO extends React.Component {
         return (
             <div>
                 <TextField
-                    hintText="Add a task"
+                    hintText='Add what you want'
                     fullWidth={true}
                     onKeyPress={this.handleKeyPress}
                 />
