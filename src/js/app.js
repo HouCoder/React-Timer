@@ -10,6 +10,9 @@ injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// Import stylesheets
+require('../scss/main.scss');
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 
