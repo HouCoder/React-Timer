@@ -1,5 +1,4 @@
-# React-Timer
-A simple 🕙 with React.js
+# React-Todo
 
 ## Setup
 

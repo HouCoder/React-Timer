@@ -19,7 +19,7 @@ class Header extends React.Component {
         return (
             <div>
                 <AppBar
-                    title='React Timer'
+                    title='React Todo'
                     iconClassNameRight='muidocs-icon-navigation-expand-more'
                     onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
                 />
