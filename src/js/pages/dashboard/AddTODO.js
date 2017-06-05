@@ -4,11 +4,17 @@ import TextField from 'material-ui/TextField'
 export default class addTODO extends React.Component {
 
     handleKeyPress = (event) => {
-        let value = event.target.value
+        let title = event.target.value
 
         // Pressed the Enter key
-        if (event.charCode === 13 && value) {
-            this.props.handleAddTODO(value)
+        if (event.charCode === 13 && title) {
+            const newTODODetail = {
+                id: Date.now(),
+                title: title,
+                isCompleted: false,
+            }
+
+            this.props.handleAddTODO(newTODODetail)
 
             // Clear typed text.
             event.target.value = null

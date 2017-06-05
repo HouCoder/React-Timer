@@ -42,7 +42,7 @@ export default class TODOList extends React.Component {
                                 leftCheckbox={<Checkbox onClick={(e) => {e.stopPropagation()} } />}
                                 onClick={this.openDetail}
                                 rightIconButton={rightIconMenu}
-                                primaryText={row.value}
+                                primaryText={row.title}
                             />
                         )
                     })

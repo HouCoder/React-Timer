@@ -25,11 +25,8 @@ class Dashboard extends React.Component {
         }
     }
 
-    handleAddTODO(todo) {
-        this.state.TODOs.push({
-            id: Date.now(),
-            value: todo,
-        })
+    handleAddTODO(newTODODetail) {
+        this.state.TODOs.push(newTODODetail)
 
         // Call setState method to refresh the list
         this.setState({
