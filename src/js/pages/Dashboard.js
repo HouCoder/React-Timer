@@ -1,7 +1,8 @@
 import React from 'react'
 
 import AddTODO from './dashboard/AddTODO'
-import TODOList from './dashboard/TODOList'
+import {RemainingTODOs, FinishedTODOs} from './dashboard/TODOList'
+import {getTODO} from '../model/localStorage'
 
 class Dashboard extends React.Component {
     state = {
@@ -11,14 +12,7 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props)
 
-        let TODOs
-        const existingTODOs = localStorage.getItem('TODOs')
-
-        if (localStorage.getItem('TODOs')) {
-            TODOs = JSON.parse(localStorage.getItem('TODOs'))
-        } else {
-            TODOs = []
-        }
+        let TODOs = getTODO();
 
         this.state = {
             TODOs
@@ -26,7 +20,7 @@ class Dashboard extends React.Component {
     }
 
     handleAddTODO(newTODODetail) {
-        this.state.TODOs.push(newTODODetail)
+        this.state.TODOs.push(t stnewTODODetail)
 
         // Call setState method to refresh the list
         this.setState({
@@ -39,9 +33,10 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="o-container">
                 <AddTODO handleAddTODO={this.handleAddTODO.bind(this)} />
-                <TODOList TODOs={this.state.TODOs} />
+                <RemainingTODOs TODOs={this.state.TODOs} />
+                <FinishedTODOs TODOs={this.state.TODOs} />
             </div>
         )
     }

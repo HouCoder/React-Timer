@@ -23,13 +23,11 @@ export default class addTODO extends React.Component {
 
     render() {
         return (
-            <div>
-                <TextField
-                    hintText='Add what you want'
-                    fullWidth={true}
-                    onKeyPress={this.handleKeyPress}
-                />
-            </div>
+            <TextField
+                hintText='Add what you want'
+                fullWidth={true}
+                onKeyPress={this.handleKeyPress}
+            />
         )
     }
 }

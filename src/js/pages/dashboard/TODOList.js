@@ -1,50 +1,56 @@
 import React from 'react'
 import {List, ListItem} from 'material-ui/List'
-import IconMenu from 'material-ui/IconMenu'
-import IconButton from 'material-ui/IconButton'
 import Checkbox from 'material-ui/Checkbox'
-import Divider from 'material-ui/Divider'
-import MenuItem from 'material-ui/MenuItem'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import Subheader from 'material-ui/Subheader';
+import {getTODO, setTODO} from '../../model/localStorage'
 
-const iconButtonElement = (
-    <IconButton
-        touch={true}
-        tooltip="more"
-        tooltipPosition="bottom-left"
-    >
-    <MoreVertIcon color={grey400} />
-  </IconButton>
-)
-
-const rightIconMenu = (
-    <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem>Reply</MenuItem>
-        <MenuItem>Forward</MenuItem>
-        <MenuItem>Delete</MenuItem>
-    </IconMenu>
-)
-
-export default class TODOList extends React.Component {
-    openDetail(event) {
-        event.stopPropagation()
-        event.preventDefault()
+export class RemainingTODOs extends React.Component {
+    componentWillReceiveProps(newProps) {
+        console.log(newProps)
     }
 
-    render = () => {
+    handleOnCheck(isChecked, row) {
+        setTODO(row.id, {
+            isCompleted: isChecked,
+        });
+    }
+
+    render() {
         return (
             <List>
+                <Subheader>Remaining TODOs</Subheader>
                 {
                     this.props.TODOs.map((row) => {
-                        return (
-                            <ListItem key={row.id}
-                                leftCheckbox={<Checkbox onClick={(e) => {e.stopPropagation()} } />}
-                                onClick={this.openDetail}
-                                rightIconButton={rightIconMenu}
-                                primaryText={row.title}
-                            />
-                        )
+                        if (!row.isCompleted) {
+                            return (
+                                <ListItem key={row.id}
+                                    leftCheckbox={<Checkbox onCheck={(event, isChecked) => this.handleOnCheck(isChecked, row)} />}
+                                    primaryText={row.title}
+                                />
+                            )
+                        }
+                    })
+                }
+            </List>
+        )
+    }
+}
+
+export class FinishedTODOs extends React.Component {
+    render() {
+        return (
+            <List>
+                <Subheader>Finished TODOs</Subheader>
+                {
+                    this.props.TODOs.map((row) => {
+                        if (row.isCompleted) {
+                            return (
+                                <ListItem key={row.id}
+                                    leftCheckbox={<Checkbox onClick={(e) => {e.stopPropagation()} } />}
+                                    primaryText={row.title}
+                                />
+                            )
+                        }
                     })
                 }
             </List>
